@@ -1,0 +1,116 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "This MEATER probe is already configured.",
+      "no_devices_found": "No MEATER probes were found. Remove the probe from its charger and make sure the MEATER app and extender are not connected.",
+      "not_supported": "The discovered Bluetooth device is not a supported MEATER probe."
+    },
+    "step": {
+      "bluetooth_confirm": {
+        "title": "Set up MEATER probe",
+        "description": "A MEATER probe was found at {address}. Choose a friendly name. This name is used when Home Assistant creates the device and entity IDs.",
+        "data": {
+          "name": "Friendly name"
+        }
+      },
+      "user": {
+        "data": {
+          "address": "MEATER probe"
+        },
+        "description": "Select a discovered MEATER probe."
+      },
+      "name": {
+        "title": "Name MEATER probe",
+        "description": "Choose a friendly name for the probe at {address}.",
+        "data": {
+          "name": "Friendly name"
+        }
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Rename MEATER probe",
+        "description": "Change the device's friendly name. Existing entity IDs are preserved by Home Assistant.",
+        "data": {
+          "name": "Friendly name"
+        }
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "connected": {
+        "name": "Connected"
+      },
+      "inserted": {
+        "name": "Inserted"
+      },
+      "cooking": {
+        "name": "Cooking"
+      },
+      "resting": {
+        "name": "Resting"
+      }
+    },
+    "sensor": {
+      "ambient_temperature": {
+        "name": "Ambient temperature"
+      },
+      "battery": {
+        "name": "Battery"
+      },
+      "rssi": {
+        "name": "Signal strength"
+      },
+      "tip_temperature": {
+        "name": "Tip temperature"
+      },
+      "heating_rate": {
+        "name": "Heating rate"
+      },
+      "cook_state": {
+        "name": "Cook state"
+      },
+      "temperature_difference": {
+        "name": "Temperature difference"
+      },
+      "smoothed_tip_temperature": {
+        "name": "Smoothed tip temperature"
+      },
+      "smoothed_ambient_temperature": {
+        "name": "Smoothed ambient temperature"
+      },
+      "cook_duration": {
+        "name": "Cook duration"
+      },
+      "maximum_tip_temperature": {
+        "name": "Maximum tip temperature"
+      },
+      "maximum_ambient_temperature": {
+        "name": "Maximum ambient temperature"
+      },
+      "average_heating_rate": {
+        "name": "Average heating rate"
+      },
+      "last_cook": {
+        "name": "Last cook"
+      },
+      "notification_rate": {
+        "name": "Notification rate"
+      }
+    },
+    "event": {
+      "cook_event": {
+        "name": "Cook event",
+        "state_attributes": {
+          "event_type": {
+            "name": "Event type"
+          }
+        }
+      }
+    }
+  },
+  "title": "MEATER BLE"
+}

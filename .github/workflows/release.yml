@@ -1,0 +1,35 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify tag matches manifest
+        run: |
+          VERSION="$(python -c 'import json; print(json.load(open("custom_components/meater_ble/manifest.json"))["version"])')"
+          test "${GITHUB_REF_NAME}" = "v${VERSION}"
+      - name: Build manual-install archive
+        run: |
+          mkdir -p release/custom_components
+          cp -a custom_components/meater_ble release/custom_components/
+          cp README.md CHANGELOG.md LICENSE release/
+          cd release
+          zip -r "../meater-ble-${GITHUB_REF_NAME#v}.zip" .
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          FLAGS=""
+          if [[ "${GITHUB_REF_NAME}" == *"b"* || "${GITHUB_REF_NAME}" == *"rc"* ]]; then
+            FLAGS="--prerelease"
+          fi
+          gh release create "${GITHUB_REF_NAME}"             "meater-ble-${GITHUB_REF_NAME#v}.zip"             --generate-notes             --title "MEATER BLE ${GITHUB_REF_NAME#v}"             ${FLAGS}

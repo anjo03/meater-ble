@@ -1,0 +1,58 @@
+name: Bug report
+description: Report a reproducible MEATER BLE problem
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: input
+    id: ha_version
+    attributes:
+      label: Home Assistant version
+    validations:
+      required: true
+  - type: input
+    id: integration_version
+    attributes:
+      label: MEATER BLE version
+    validations:
+      required: true
+  - type: dropdown
+    id: model
+    attributes:
+      label: Probe model
+      options: [Original MEATER, MEATER Plus, Other or unknown]
+    validations:
+      required: true
+  - type: input
+    id: bluetooth
+    attributes:
+      label: Bluetooth adapter or ESPHome proxy
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      render: text
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: The MEATER app was closed.
+          required: true
+        - label: The Plus extender was prevented from connecting.
+          required: true
+        - label: Private information was removed.
+          required: true
