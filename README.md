@@ -34,7 +34,7 @@ Other MEATER generations are not yet confirmed.
 
 1. Open **HACS → Integrations**.
 2. Open the menu and select **Custom repositories**.
-3. Add `https://github.com/anjo03/esphome-meater`.
+3. Add `https://github.com/anjo03/meater-ble`.
 4. Select category **Integration**.
 5. Install **MEATER BLE** and restart Home Assistant.
 6. Open **Settings → Devices & services → Add integration → MEATER BLE**.
