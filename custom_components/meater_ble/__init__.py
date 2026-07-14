@@ -33,7 +33,10 @@ async def async_setup_entry(hass: HomeAssistant, entry: MeaterConfigEntry) -> bo
     )
 
     await coordinator.async_initialize()
-    await coordinator.async_config_entry_first_refresh()
+
+    # A MEATER probe is normally offline while stored in its charger.
+    # Refresh once, but do not fail config-entry setup if it is absent.
+    await coordinator.async_refresh()
     entry.runtime_data = coordinator
 
     entry.async_on_unload(entry.add_update_listener(_async_update_listener))

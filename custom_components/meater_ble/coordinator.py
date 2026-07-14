@@ -191,7 +191,7 @@ class MeaterCoordinator(DataUpdateCoordinator[MeaterData]):
             if ble_device is None:
                 self.data.connected = False
                 raise UpdateFailed(
-                    f"MEATER {self.address} is not currently visible over Bluetooth"
+                    f"MEATER {self.address} is offline or in its charger"
                 )
 
             self._client = await establish_connection(

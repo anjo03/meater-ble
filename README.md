@@ -34,7 +34,7 @@ Other MEATER generations are not yet confirmed.
 
 1. Open **HACS → Integrations**.
 2. Open the menu and select **Custom repositories**.
-3. Add `https://github.com/anjo03/meater-ble`.
+3. Add `https://github.com/anjo03/esphome-meater`.
 4. Select category **Integration**.
 5. Install **MEATER BLE** and restart Home Assistant.
 6. Open **Settings → Devices & services → Add integration → MEATER BLE**.
@@ -102,6 +102,16 @@ The original probe allows one active Bluetooth connection. Close the MEATER app 
 ## Privacy
 
 No data is sent externally. The latest 25 completed inferred sessions per probe are stored in Home Assistant's local `.storage` directory.
+
+## Offline behavior
+
+A MEATER probe is normally offline while stored in its charger. MEATER BLE
+loads normally in that state:
+
+- The config entry does not show a red setup error.
+- Entities remain registered and show unavailable while the probe is offline.
+- The connection diagnostic entity is off.
+- The integration reconnects automatically when the probe is removed from the charger.
 
 ## Troubleshooting
 
